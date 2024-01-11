@@ -1,28 +1,29 @@
-
-import type { Metadata } from "next";
-
+"use client"
 import { ReactNode } from "react";
 import "./globals.css";
 import CustomizeAppBar from "../components/CustomizeAppBar";
 import { ThemeProvider } from '@mui/material'
 import { LightTheme } from "@shared/themes";
-
-
-
-export const metadata: Metadata = {
-  title: 'Web',
-  description: 'Web',
-}
+import OurServices from "../components/Avaliations";
+import FollowUp from "../components/FollowUp";
+import Clients from "../components/Clients";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <title>Growiser | Marketing Digital</title>
+        <link rel="shortcut icon" href="/assets/favicon.png" />
+      </head>
       <body>
         <ThemeProvider theme={LightTheme}>
           <CustomizeAppBar />
+          <OurServices />
+          <Clients />
+          <FollowUp />
           {children}
         </ThemeProvider>
       </body>
-    </html >
+    </html>
   )
 }
