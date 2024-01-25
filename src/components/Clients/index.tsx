@@ -9,15 +9,14 @@ const ParticleBackground = styled('div')`
   width: 100%;
   height: 100%;
   z-index: 0;
-  background: #ECEEEE;
-  
+  background: none;
   color:#ffffff;
   overflow: hidden;
 `;
 
 const Clients: React.FC = () => {
   return (
-    <Box sx={{ position: 'relative', width: '100%', backgroundColor: '#00384E' }}>
+    <Box sx={{ position: 'relative', width: '100%', backgroundColor: 'none' }}>
       <ParticleBackground>
 
       </ParticleBackground>

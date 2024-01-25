@@ -1,4 +1,4 @@
-import FollowUp from "../components/FollowUp";
+import FollowUp from "../components/Contact";
 import OurServices from "../components/Avaliations";
 import styles from "./page.module.css";
 

@@ -37,6 +37,7 @@ function CustomizeAppBar() {
 
       {/* Logo */}
       <div style={{
+        backgroundColor: "#00384e55",
         position: "fixed",
         display: 'flex',
         zIndex: '5',
@@ -49,7 +50,9 @@ function CustomizeAppBar() {
           zIndex: '5',
           width: "1240px",
           height: "50px",
-          margin: "auto="
+          margin: "auto",
+          alignItems: "center",
+          justifyContent: "center",
         }}>
           <img
             src="/assets/logogwtransparente.png"
@@ -57,11 +60,28 @@ function CustomizeAppBar() {
             height={50}
             alt="logo"
           />
+          <div style={{
+            display: 'flex',
+            zIndex: '5',
+            width: "500px",
+            height: "50px",
+            margin: "50px",
+            color: "#FFFFFF",
+            fontFamily: "Space Grotesk,Poppins,Roboto,sans-serif",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}>
+            <div>Serviços</div>
+            <div>Sobre nós</div>
+            <div>Avaliações</div>
+            <div>Clientes</div>
+            <div>Fale Conosco</div>
+          </div>
         </div>
       </div>
 
       {/* App Bar */}
-      <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'none', zIndex: '3' }}>
+      <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'none', zIndex: '3', backgroundColor: '#00384E' }}>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             {/* Menu Icon */}
@@ -129,7 +149,7 @@ function CustomizeAppBar() {
       <TextBox>
         <OutDoor />
       </TextBox>
-    </Box>
+    </Box >
   );
 }
 

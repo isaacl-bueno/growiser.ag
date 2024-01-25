@@ -5,8 +5,10 @@ import CustomizeAppBar from "../components/CustomizeAppBar";
 import { ThemeProvider } from '@mui/material'
 import { LightTheme } from "@shared/themes";
 import OurServices from "../components/Avaliations";
-import FollowUp from "../components/FollowUp";
+import FollowUp from "../components/Contact";
 import Clients from "../components/Clients";
+import AboutUs from "../components/aboutus";
+import Services from "../components/services";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -20,6 +22,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <CustomizeAppBar />
           <OurServices />
           <Clients />
+          <AboutUs />
+          <Services />
           <FollowUp />
           {children}
         </ThemeProvider>
