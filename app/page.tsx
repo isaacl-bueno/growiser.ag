@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
         }}
       >
         <div className="absolute inset-0 w-full h-full bg-[#00384E] bg-opacity-30" />
-        <header className="max-w-7xl mx-auto flex justify-between items-center p-4 md:p-6 relative z-20">
+        <header className="max-w-7xl mx-auto flex justify-between items-center p-4 md:p-6 relative z-30">
           {/* Mobile Hamburger */}
           <div className="md:hidden flex items-center">
             <button
