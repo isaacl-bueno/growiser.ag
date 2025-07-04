@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import LT Wave font */
+@font-face {
+  font-family: 'LTWave';
+  src: url('/fonts/LTWave-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
