@@ -5,6 +5,11 @@ import Image from "next/image";
 
 const HomePage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f7fbfd]">
@@ -151,6 +156,7 @@ const HomePage: React.FC = () => {
             Para quem é a{" "}
             <span className="bg-gradient-to-r from-[#00384E] via-[#0A8ABC] to-[#0A8ABC] bg-clip-text text-transparent italic">
               growiser?
+              <span className="opacity-0">.</span>
             </span>
           </h2>
           <div className="w-[150px] h-[4px] bg-gradient-to-r from-[#308ab4] to-[#41acd6] mb-14 rounded-full" />
@@ -457,47 +463,101 @@ const HomePage: React.FC = () => {
             miúda. Alinhamos objetivos e{" "}
             <span className="text-[#41acd6]">entregamos crescimento.</span>
           </p>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
-            <div className="bg-white rounded-xl p-6 md:p-8 shadow flex flex-col items-center">
-              <h4 className="font-bold text-[#00384E] mb-2 text-center">
-                Mensal Fixo
-              </h4>
-              <p className="text-gray-700 mb-2 text-center">
-                Valor fechado por mês
-              </p>
-              <p className="text-gray-500 text-sm mb-4 text-center">
-                Empresas que preferem previsibilidade e acompanhamento contínuo.
-              </p>
+          {/* Card de planos responsivo */}
+          <div className="flex flex-col w-full max-w-3xl mx-auto bg-white shadow-xl rounded-[30px] md:rounded-[50px] p-4 md:p-8 mb-8">
+            <div className="flex flex-col md:hidden w-full">
+              <div className="grid grid-cols-2 text-center font-bold text-[#0A8ABC] text-lg mb-2">
+                <div>Mensal Fixo</div>
+                <div>Success Free</div>
+              </div>
+              <div className="grid grid-cols-2 text-center mb-2">
+                <div className="font-semibold text-xs text-[#00384E]">Como Funciona:</div>
+                <div className="font-semibold text-xs text-[#00384E]">Como Funciona:</div>
+              </div>
+              <div className="grid grid-cols-2 text-center mb-4">
+                <div className="text-xs text-[#0569A5]">Valor fechado por mês</div>
+                <div className="text-xs text-[#0569A5]">Crescemos juntos: só ganhamos se bater meta</div>
+              </div>
+              <div className="grid grid-cols-2 text-center mb-2">
+                <div className="font-semibold text-xs text-[#00384E]">Ideal Para:</div>
+                <div className="font-semibold text-xs text-[#00384E]">Ideal Para:</div>
+              </div>
+              <div className="grid grid-cols-2 text-center">
+                <div className="text-xs text-[#0569A5]">Empresas que preferem previsibilidade</div>
+                <div className="text-xs text-[#0569A5]">Empresas focadas em performance e escala</div>
+              </div>
             </div>
-            <div className="bg-white rounded-xl p-6 md:p-8 shadow flex flex-col items-center">
-              <h4 className="font-bold text-[#00384E] mb-2 text-center">
-                Success Fee
-              </h4>
-              <p className="text-gray-700 mb-2 text-center">
-                Pagamento por resultado
-              </p>
-              <p className="text-gray-500 text-sm mb-4 text-center">
-                Ideal para quem quer alinhar o sucesso do negócio ao nosso
-                trabalho.
-              </p>
+            {/* DESKTOP: Mantém layout antigo */}
+            <div className="hidden md:flex flex-row w-full">
+              <div className="flex flex-col w-[40%] items-center justify-between pr-6">
+                <Image
+                  src="/favicon.png"
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 mb-4"
+                />
+                <div className="flex flex-col gap-8">
+                  <div className="font-bold text-[#00384E] text-lg md:text-xl text-center">
+                    Como Funciona:
+                  </div>
+                  <div className="font-bold text-[#00384E] text-lg md:text-xl text-center">
+                    Ideal Para:
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-row w-full mb-2">
+                  <div className="flex-1 text-center font-bold text-[#0A8ABC] text-xl md:text-2xl">
+                    Mensal Fixo
+                  </div>
+                  <div className="flex-1 text-center font-bold text-[#0A8ABC] text-xl md:text-2xl">
+                    Success Free
+                  </div>
+                </div>
+                <div className="flex flex-row border shadow-2xl border-[#41acd6] rounded-[50px] overflow-hidden relative right-[-32px] bottom-[-32px]">
+                  {/* Mensal Fixo */}
+                  <div className="flex-1 flex flex-col p-4 md:p-6 text-center justify-between border-b md:border-b-0">
+                    <div className="font-semibold text-md text-[#0569A5] mb-2">
+                      Valor fechado por mês
+                    </div>
+                    <div className="font-semibold text-md text-[#0569A5]">
+                      Empresas que preferem
+                      <br /> previsibilidade
+                    </div>
+                  </div>
+                  {/* Success Fee */}
+                  <div className="flex-1 p-4 md:p-6 text-center">
+                    <div className="font-semibold text-md text-[#0569A5] mb-2">
+                      Crescemos juntos: só ganhamos se bater meta
+                    </div>
+                    <div className="font-semibold text-md text-[#0569A5]">
+                      Empresas focadas em performance e escala
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
-            <span className="bg-[#e6f7ff] text-[#00384E] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium">
+          <p className="text-center font-semibold text-gray-700 mb-4 md:mb-5 mt-8 md:mt-10 max-w-4xl mx-auto text-md md:text-3xl">
+            Todos incluem:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 max-w-4xl mx-auto">
+            <span className="bg-white shadow-xl text-[#045371] border border-[#5BB6D9] px-3 md:px-4 py-3 md:py-2 rounded-[20px] text-xs md:text-sm flex justify-center items-center text-center min-h-[60px] md:min-h-0">
               Gestão completa de mídia
             </span>
-            <span className="bg-[#e6f7ff] text-[#00384E] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium">
+            <span className="bg-white shadow-xl text-[#045371] border border-[#5BB6D9] px-3 md:px-4 py-3 md:py-2 rounded-[20px] text-xs md:text-sm flex justify-center items-center text-center min-h-[60px] md:min-h-0">
               Análise e acompanhamento estratégico
             </span>
-            <span className="bg-[#e6f7ff] text-[#00384E] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium">
+            <span className="bg-white shadow-xl text-[#045371] border border-[#5BB6D9] px-3 md:px-4 py-3 md:py-2 rounded-[20px] text-xs md:text-sm flex justify-center items-center text-center min-h-[60px] md:min-h-0">
               Apoio ao time interno
             </span>
-            <span className="bg-[#e6f7ff] text-[#00384E] px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium">
+            <span className="bg-white shadow-xl text-[#045371] border border-[#5BB6D9] px-3 md:px-4 py-3 md:py-2 rounded-[20px] text-xs md:text-sm flex justify-center items-center text-center min-h-[60px] md:min-h-0">
               Acompanhamento semanal com reports
             </span>
           </div>
           <div className="text-center">
-            <Button className="bg-[#41acd6] text-white hover:bg-white rounded-[50px] hover:text-[#41acd6] font-bold px-6 md:px-8 py-3 shadow">
+            <Button className="bg-gradient-to-r from-[#5BB6D9] to-[#02AEFF] hover:from-white hover:to-white hover:text-[#5BB6D9] text-white rounded-[50px] font-bold px-6 md:px-8 py-3 shadow-lg transition-all duration-300">
               TENHO INTERESSE
             </Button>
           </div>
@@ -514,33 +574,56 @@ const HomePage: React.FC = () => {
             </span>
           </h2>
           <div className="w-[150px] h-[4px] bg-gradient-to-r from-[#308ab4] to-[#41acd6] mb-14 rounded-full" />
-          <p className="text-center text-gray-700 mb-8 md:mb-10 text-sm md:text-base">
-            Olha quem já fez com a gente:
+          <p className="text-center text-gray-700 mb-8 md:mb-10 font-bold text-lg md:text-2xl">
+            Olha quem já fez{" "}
+            <span className="text-[#41acd6]">com a gente:</span>
           </p>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            <div className="bg-[#f7fbfd] rounded-xl p-6 md:p-8 shadow text-left">
-              <p className="text-gray-700 mb-4 text-sm md:text-base">
-                &lsquo;A diferença com a Growiser foi imediata. Em poucos meses,
-                nosso ROI dobrou e finalmente entendemos onde investir para
-                crescer de verdade.&rsquo;
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+            <div className="bg-[#f7fbfd] rounded-[30px] md:rounded-[50px] border border-[#53B1D6] p-4 md:p-8 shadow-2xl text-left">
+              <p className="text-gray-700 mb-4 text-xs md:text-base leading-relaxed">
+                &lsquo;A diferença com a Growiser foi nítida já nos primeiros 10
+                dias. Antes, nossas campanhas de mídia paga só geravam custo —
+                poucos leads e praticamente nenhuma reunião qualificada. A
+                equipe organizou tudo com uma estratégia clara e segmentações
+                bem definidas, e os resultados começaram a aparecer rapidamente.
+                Pela primeira vez, sentimos que nosso investimento está sendo
+                bem direcionado, com leads realmente interessados e reuniões com
+                potencial real de negócio.&rsquo;
               </p>
-              <span className="text-[#00384E] font-bold text-sm md:text-base">
+              <span className="text-[#00384E] flex italic w-full justify-end font-bold text-xs md:text-base">
                 Fulano, CEO da XYZ
               </span>
             </div>
-            <div className="bg-[#f7fbfd] rounded-xl p-6 md:p-8 shadow text-left">
-              <p className="text-gray-700 mb-4 text-sm md:text-base">
-                &lsquo;O que mais impressiona é a transparência e o
-                acompanhamento. O time Growiser realmente veste a camisa do
-                cliente.&rsquo;
+            <div className="bg-gradient-to-b from-[#53B1D6] to-[#0099D4] rounded-[30px] md:rounded-[50px] p-4 md:p-8 shadow-2xl text-left">
+              <p className="text-white mb-4 text-xs md:text-base leading-relaxed">
+                &lsquo;O que mais gostei no trabalho da Growiser foi como eles
+                pensaram em tudo. A gente estava com a casa meio bagunçada —
+                anúncios rodando, mas sem um funil claro, CRM desatualizado e o
+                time de vendas meio perdido. Eles ajudaram a organizar e
+                conectar tudo: mídia, CRM, abordagem comercial... agora as
+                coisas fazem sentido. O lead entra, é nutrido e chega mais
+                preparado pra conversar. Foi um diferencial importante ter
+                alguém olhando o todo e não só os cliques das campanhas. &rsquo;
               </p>
-              <span className="text-[#00384E] font-bold text-sm md:text-base">
+              <span className="text-white flex italic w-full justify-end font-bold text-xs md:text-base">
                 Fulana, CEO da XYZ
               </span>
             </div>
           </div>
-          <div className="text-center mt-8 md:mt-10">
-            <Button className="bg-white text-[#41acd6] hover:bg-[#41acd6] rounded-[50px] hover:text-white font-bold px-6 md:px-8 py-3 shadow">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-4 items-center justify-center text-center mt-8">
+            <p className="text-center md:text-start font-bold text-base md:text-2xl text-[#00384E] leading-tight">
+              O que falta
+              <br />
+              para a sua
+              <br />
+              empresa
+              <br />
+              <span className="text-[#41acd6]">
+                crescer
+                <br /> mais?
+              </span>
+            </p>
+            <Button className="bg-white text-[#41acd6] hover:bg-[#41acd6] rounded-[50px] hover:text-white font-bold px-6 md:px-8 py-3 shadow-lg w-full md:w-auto">
               QUERO CRESCER COM A GROWISER
             </Button>
           </div>
@@ -557,56 +640,83 @@ const HomePage: React.FC = () => {
             </span>
           </h2>
           <div className="w-[150px] h-[4px] bg-gradient-to-r from-[#308ab4] to-[#41acd6] mb-14 rounded-full" />
-          <div className="space-y-4">
-            {/* Troque por um componente de accordion real depois */}
-            <div className="bg-white rounded-xl p-4 md:p-6 shadow cursor-pointer">
-              <h4 className="font-bold text-[#00384E] mb-2 text-sm md:text-base">
-                Como funciona Growth as a Service com a Growiser?
-              </h4>
-              <p className="text-gray-700 text-xs md:text-sm">
-                Você contrata a Growiser como uma extensão do seu time, focada
-                em resultados reais e crescimento contínuo.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-4 md:p-6 shadow cursor-pointer">
-              <h4 className="font-bold text-[#00384E] mb-2 text-sm md:text-base">
-                Como é a operação no dia a dia com meu time?
-              </h4>
-              <p className="text-gray-700 text-xs md:text-sm">
-                Nosso time atua junto ao seu, com reuniões semanais, reports e
-                acompanhamento constante.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-4 md:p-6 shadow cursor-pointer">
-              <h4 className="font-bold text-[#00384E] mb-2 text-sm md:text-base">
-                Quais são os serviços que estão inclusos?
-              </h4>
-              <p className="text-gray-700 text-xs md:text-sm">
-                Gestão de mídia, análise de dados, estratégia, execução e
-                acompanhamento. Tudo incluso.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-4 md:p-6 shadow cursor-pointer">
-              <h4 className="font-bold text-[#00384E] mb-2 text-sm md:text-base">
-                Por que contratar a Growiser e não outra agência?
-              </h4>
-              <p className="text-gray-700 text-xs md:text-sm">
-                Foco total em resultado, transparência e acompanhamento próximo.
-                Não somos só uma agência, somos parceiros de crescimento.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-4 md:p-6 shadow cursor-pointer">
-              <h4 className="font-bold text-[#00384E] mb-2 text-sm md:text-base">
-                Como funciona o plano success fee?
-              </h4>
-              <p className="text-gray-700 text-xs md:text-sm">
-                Você só paga uma porcentagem sobre o resultado gerado.
-                Alinhamento total de interesses.
-              </p>
-            </div>
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {[
+              {
+                question: "Como funciona Growth as a Service com a Growiser?",
+                answer:
+                  "Na prática, atuamos na Growiser como uma extensão do seu time, porém estrategicamente. Analisamos funil, mídia, CRM e vendas para identificar oportunidades de crescimento e sugerimos as formas como poderemos atingi-las.",
+              },
+              {
+                question: "Como é a operação no dia a dia com meu time?",
+                answer:
+                  "Na Growiser, trabalhamos lado a lado com seu time, com rotinas semanais e muita troca. A gente cria as metas junto com você e acompanhamos os resultados de perto. Tudo acontece de forma colaborativa, com organização, transparência e foco total no que traz resultado.",
+              },
+              {
+                question: "Quais são os serviços que estão inclusos?",
+                answer:
+                  "Na Growiser, atuamos em estratégias de vendas, CRM e conteúdo conforme as prioridades e necessidades de cada cliente. Sabemos que resultados consistentes exigem um todo bem alinhado — e é aí que entra o tráfego pago: otimizamos o que já funciona e ajustamos o que não gera resultado.",
+              },
+              {
+                question: "Por que contratar a Growiser e não outra agência?",
+                answer:
+                  "Na Growiser, nosso foco não é só dar a ajuda operacional que nosso cliente precisa, mas sim, pensar junto nas estratégias que funcionam. A gente mergulha no seu negócio, trabalha junto com o seu time e foca no que realmente importa — crescimento consistente e resultados mensuráveis.",
+              },
+              {
+                question: "Como funciona o plano success fee?",
+                answer:
+                  "Na Growiser, nosso plano success fee significa que parte do nosso pagamento depende dos resultados que entregamos para o seu negócio. Definimos metas juntos e, ao atingi-las, ativamos a porcentagem combinada. Assim, alinhamos nosso compromisso diretamente ao seu crescimento.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-full border border-[#5BB6D9] pl-[1.5rem] shadow-xl cursor-pointer transition-all duration-300 hover:shadow-2xl"
+                onClick={() => toggleAccordion(index)}
+              >
+                <div className="p-6 md:p-8">
+                  <div className="flex justify-between items-center">
+                    <div className="flex-1 pr-6">
+                      <h4 className="font-bold text-[#5BB6D9] text-md md:text-2xl mb-2 leading-tight text-center md:text-left">
+                        {item.question}
+                      </h4>
+                      <div className="text-[#5BB6D9] text-sm md:text-base leading-relaxed text-center md:text-left">
+                        <p
+                          className={`transition-all duration-300 ${
+                            openAccordion === index
+                              ? "opacity-100"
+                              : "opacity-70 line-clamp-2"
+                          }`}
+                        >
+                          {openAccordion === index
+                            ? item.answer
+                            : item.answer.split(".")[0] + "..."}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <svg
+                        className={`w-5 h-5 md:w-6 md:h-6 text-[#5BB6D9] transition-transform duration-300 ${
+                          openAccordion === index ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="text-center mt-8 md:mt-10">
-            <Button className="bg-white text-[#41acd6] hover:bg-[#41acd6] rounded-[50px] hover:text-white font-bold px-6 md:px-8 py-3 shadow">
+            <Button className="bg-gradient-to-r from-[#5BB6D9] to-[#02AEFF] hover:from-white hover:to-white hover:text-[#5BB6D9] text-white rounded-[50px] font-bold px-6 md:px-8 py-3 shadow-lg transition-all duration-300">
               QUERO CRESCER COM A GROWISER
             </Button>
           </div>
@@ -679,10 +789,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex flex-col items-end">
               <span className="text-sm text-[#02283F] font-bold">
-                contato@growiser.com
+                contato@growiser.com.br
               </span>
               <span className="text-sm text-[#02283F] font-bold">
-                +55 (xx) xxxxx-xxxx
+                +55 (41) xxxxx-xxxx
               </span>
             </div>
           </div>
@@ -698,10 +808,12 @@ const HomePage: React.FC = () => {
               />
               <span className="text-lg text-[#02283F] font-bold mt-2 text-center">
                 Resultados reais com estratégias{" "}
-                <span className="text-white">inteligentes de crescimento digital.</span>
+                <span className="text-white">
+                  inteligentes de crescimento digital.
+                </span>
               </span>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-6 w-full">
               <div className="flex flex-col items-center">
                 <a
@@ -755,7 +867,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="w-full flex justify-center text-[#02283F] text-sm mt-6 text-center">
           © Growiser 2024. Todos os direitos reservados.
         </div>
