@@ -724,7 +724,7 @@ const HomePage: React.FC = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-full border border-[#5BB6D9] pl-[1.5rem] shadow-xl cursor-pointer transition-all duration-300 hover:shadow-2xl"
+                className="bg-white rounded-[100px] border border-[#5BB6D9] pl-[1.5rem] shadow-xl cursor-pointer transition-all duration-300 hover:shadow-2xl"
                 onClick={() => toggleAccordion(index)}
               >
                 <div className="p-6 md:p-8">
