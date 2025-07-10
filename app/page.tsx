@@ -938,23 +938,22 @@ const HomePage: React.FC = () => {
 
       {/* Modal para Termos de Uso e Política de Privacidade */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2">
-          <div className="bg-white rounded-lg w-full max-w-6xl h-[95vh] flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 md:p-4">
+          <div className="bg-white rounded-lg w-full max-w-6xl md:h-[95vh] h-[98vh] flex flex-col">
             {/* Header da Modal */}
-            <div className="flex justify-between items-center p-4 border-b relative">
-              <div className="flex-1"></div>
-              <h2 className="text-xl font-bold text-[#00384E] absolute left-1/2 transform -translate-x-1/2">
+            <div className="flex items-center justify-between p-3 md:p-4 border-b">
+              <div className="w-6 md:w-10" />
+              <h2 className="flex-1 text-center text-sm md:text-xl font-bold text-[#00384E] px-1 truncate">
                 Termos de Uso e Política de Privacidade
               </h2>
               <button
                 onClick={closeModal}
-                className="text-gray-500 hover:text-gray-700 text-2xl font-bold flex-1 flex justify-end"
+                className="text-gray-500 hover:text-gray-700 text-xl md:text-2xl font-bold w-6 md:w-10 flex justify-end"
                 aria-label="Fechar modal"
               >
                 &times;
               </button>
             </div>
-            
             {/* Conteúdo da Modal */}
             <div className="flex-1 w-full">
               <iframe
